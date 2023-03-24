@@ -45,7 +45,8 @@ terraform apply
 ```
 
 You will be prompted before any resources are provisioned, double check everything looks fine and then type yes to proceed
-![](https://drive.google.com/file/d/1qi6WAturILiXjQrHoR5fDvmG5mdZGzkt/view?usp=share_link) 
+![](https://drive.google.com/uc?export=view&id=1qi6WAturILiXjQrHoR5fDvmG5mdZGzkt)
+
 
 ## Changing infrastructure
 
@@ -101,7 +102,7 @@ Finally, the network interface is defined.
 In the above, google_compute_network.vpc_network is the ID, matching the values in the block that defines the network, and name is a property of that resource. The presence of the access_config block, even without any arguments, ensures that the instance will be accessible over the internet.
 
 We can provision this resource using ```terraform apply``` and can see from the output, that the VM is created.
-![](https://drive.google.com/file/d/1Ro_-MNWjXrcmMhtzkBB8NCkQYJJgQqbm/view?usp=share_link) 
+![](https://drive.google.com/uc?export=view&id=1Ro_-MNWjXrcmMhtzkBB8NCkQYJJgQqbm)
 
 ### Changing resources
 
@@ -132,7 +133,7 @@ resource "google_compute_instance" "vm_instance" {
 ```
 
 If we run again ```terraform apply``` we can see the resource is updated in place, without having to destroy and re-provision the VM
-![](https://drive.google.com/file/d/1Ro_-MNWjXrcmMhtzkBB8NCkQYJJgQqbm/view?usp=share_link) 
+![](https://drive.google.com/uc?export=view&id=1Ro_-MNWjXrcmMhtzkBB8NCkQYJJgQqbm)
 
 ### Destructive Changes
 
@@ -148,7 +149,7 @@ One example would be to change the boot disk of the VM. Let's do that by ammendi
 ```
 
 If we run again ```terraform apply`` we can see the resource has to be destroyed and recreated. The exectuion plan will also give details of what required the instance to be re-provisioned.
-![](https://drive.google.com/file/d/19Mk8qiyhWFPgG1iinZBnURPhyDpUQMP_/view?usp=share_link) 
+![](https://drive.google.com/uc?export=view&id=19Mk8qiyhWFPgG1iinZBnURPhyDpUQMP_)
 
 ### Destroying infrastructure
 
@@ -156,7 +157,7 @@ If you wish to remove all resources from a configuration, this can be accomplish
 ```
 terraform destroy
 ```
-![](https://drive.google.com/file/d/1G0mYqagLvantOeyIv6SmAZkFfPN0GFI5/view?usp=share_link) 
+![](https://drive.google.com/uc?export=view&id=1G0mYqagLvantOeyIv6SmAZkFfPN0GFI5)
 
 ## Resource dependencies
 
