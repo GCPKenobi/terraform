@@ -154,7 +154,7 @@ One example would be to change the boot disk of the VM. Let's do that by ammendi
 If we run again ```terraform apply`` we can see the resource has to be destroyed and recreated. The exectuion plan will also give details of what required the instance to be re-provisioned.
 
 ![](https://drive.google.com/uc?export=view&id=19Mk8qiyhWFPgG1iinZBnURPhyDpUQMP_)
-![](https://drive.google.com/uc?export=view&id=19Mk8qiyhWFPgG1iinZBnURPhyDpUQMP_)
+![](https://drive.google.com/uc?export=view&id=1ZXqayh_g0je14m5HL8afMl8gAv5eiALT)
 
 ### Destroying infrastructure
 
