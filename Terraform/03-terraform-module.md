@@ -36,7 +36,7 @@ git checkout tags/v6.0.1 -b v6.0.1
 ```
 
 If we look at the ```main.tf``` file we see it contains the following:
-```json
+```
 module "test-vpc-module" {
   source       = "terraform-google-modules/network/google"
   version      = "~> 6.0"
@@ -80,7 +80,7 @@ For more information around the inputs, we can refer to the documentation in the
 ### Define root input varaibles
 
 To use input variables, identify module input varaibles that you may wish to change in the future, and then create a matching configuration in the ```variables.tf``` with sensible defaults. These variables can then be passed to the module block as arguements. Below shows the syntax of how these variables look:
-```json
+```
 variable "variable_name" {
   description = "Insert description of the variable"
   type        = Insert Type
@@ -90,7 +90,7 @@ variable "variable_name" {
 
 Where type can take the following values ``` string, list, map, boolean```. (** Note - type is not enclosed in speech marks)
 In practice, let's say we identified two input variables, ```project_id``` and ```network_name```. We can add these into the ```variables.tf``` file:
-```json
+```
 variable "project_id" {
   description = "The project ID to host the network in"
   type        =  string
@@ -116,7 +116,7 @@ Modules also have output values and are defined within the module with the ```ou
 Like inputs, we can see them in the [documentation](https://registry.terraform.io/modules/terraform-google-modules/network/google/3.3.0?tab=outputs) under the outputs tab. 
 
 In this module, the ```output.tf``` file looks like this
-```json
+```
 output "network_name" {
   value       = module.test-vpc-module.network_name
   description = "The name of the VPC being created"
@@ -261,7 +261,7 @@ touch website.tf variables.tf outputs.tf
 
 Open up the editor and modify these files as such:
 ```website.tf```
-```json
+```
 resource "google_storage_bucket" "bucket" {
   name               = var.name
   project            = var.project_id
@@ -306,7 +306,7 @@ resource "google_storage_bucket" "bucket" {
 ```
 
 ```variables.tf```
-```json
+```
 variable "name" {
   description = "The name of the bucket."
   type        = string
@@ -387,7 +387,7 @@ variable "lifecycle_rules" {
 ```
 
 ```outputs.tf```
-```json
+```
 output "bucket" {
   description = "The created storage bucket"
   value       = google_storage_bucket.bucket
@@ -401,7 +401,7 @@ touch main.tf outputs.tf varaibles.tf
 
 Open up the editor and modify these files as such (make sure for the ```vairables.tf``` to modify the values of variables ```project_id``` and ```name```):
 ```main.tf```
-```json
+```
 module "gcs-static-website-bucket" {
   source = "./modules/gcs-static-website-bucket"
   name       = var.name
@@ -420,7 +420,7 @@ module "gcs-static-website-bucket" {
 ```
 
 ```variables.tf```
-```json
+```
 variable "project_id" {
   description = "The ID of the project in which to provision resources."
   type        = string
@@ -434,7 +434,7 @@ variable "name" {
 ```
 
 ```outputs.tf```
-```json
+```
 output "bucket-name" {
   description = "Bucket names."
   value       = "module.gcs-static-website-bucket.bucket"
