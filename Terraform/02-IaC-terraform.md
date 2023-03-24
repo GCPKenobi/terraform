@@ -24,7 +24,7 @@ resource "google_compute_network" "vpc_network" {
 
 ### Terraform block
 
-This is defined within terraform {} and is used in order to ensure tha Terraform knows which provider to download from the [Terraform Registry](https://registry.terraform.io/). n the configuration above, the google provider's source is defined as hashicorp/google which is shorthand for registry.terraform.io/hashicorp/google.
+This is defined within *terraform {}* and is used in order to ensure tha Terraform knows which provider to download from the [Terraform Registry](https://registry.terraform.io/). n the configuration above, the google provider's source is defined as hashicorp/google which is shorthand for registry.terraform.io/hashicorp/google.
 
 ### Providers
 
@@ -45,6 +45,7 @@ terraform apply
 ```
 
 You will be prompted before any resources are provisioned, double check everything looks fine and then type yes to proceed
+![](https://drive.google.com/file/d/1qi6WAturILiXjQrHoR5fDvmG5mdZGzkt/view?usp=share_link) 
 
 ## Changing infrastructure
 
@@ -100,6 +101,7 @@ Finally, the network interface is defined.
 In the above, google_compute_network.vpc_network is the ID, matching the values in the block that defines the network, and name is a property of that resource. The presence of the access_config block, even without any arguments, ensures that the instance will be accessible over the internet.
 
 We can provision this resource using ```terraform apply``` and can see from the output, that the VM is created.
+![](https://drive.google.com/file/d/1Ro_-MNWjXrcmMhtzkBB8NCkQYJJgQqbm/view?usp=share_link) 
 
 ### Changing resources
 
@@ -130,6 +132,7 @@ resource "google_compute_instance" "vm_instance" {
 ```
 
 If we run again ```terraform apply``` we can see the resource is updated in place, without having to destroy and re-provision the VM
+![](https://drive.google.com/file/d/1Ro_-MNWjXrcmMhtzkBB8NCkQYJJgQqbm/view?usp=share_link) 
 
 ### Destructive Changes
 
@@ -145,6 +148,7 @@ One example would be to change the boot disk of the VM. Let's do that by ammendi
 ```
 
 If we run again ```terraform apply`` we can see the resource has to be destroyed and recreated. The exectuion plan will also give details of what required the instance to be re-provisioned.
+![](https://drive.google.com/file/d/19Mk8qiyhWFPgG1iinZBnURPhyDpUQMP_/view?usp=share_link) 
 
 ### Destroying infrastructure
 
@@ -152,6 +156,7 @@ If you wish to remove all resources from a configuration, this can be accomplish
 ```
 terraform destroy
 ```
+![](https://drive.google.com/file/d/1G0mYqagLvantOeyIv6SmAZkFfPN0GFI5/view?usp=share_link) 
 
 ## Resource dependencies
 
@@ -193,7 +198,7 @@ As expected, the static ip is created first and assigned to the VM network inter
 
 ### Implicit and explicit dependencies
 
-Implicit dependencies are the primary way to inform Terraform about relationships between resources and should be used where possible. The static IP address above is an example of this as the refence *google_compute_address.vm_static_ip.address* creates an implicit dependency on the *google_compute_address* named *vm_static_ip*.
+Implicit dependencies are the primary way to inform Terraform about relationships between resources and should be used where possible. The static IP address above is an example of this as the refence ```google_compute_address.vm_static_ip.address``` creates an implicit dependency on the ```google_compute_address``` named ```vm_static_ip```.
 
 Sometimes a dependency between resources can exist that is not visible to Terraform. For these, we define an explicit dependency using depends_on. The below is an example of a VM which has an explicit dependency to the Cloud Storage Bucket which is also being created. In order to run, make sure to replace <UNIQUE-BUCKET-NAME> with a unique name
 ```
@@ -257,7 +262,7 @@ resource "google_compute_instance" "vm_instance" {
 
 In the above example, we use *local-exec* as a provisoner which will execute a command locally on the machine running Terraform (**not the VM we are provisioning**)
 
-Provisioners only run whe a resource is created. As such in ordder to see this in action we would have to recreate the resource. We can inform terraform to recreate the instance with the following command:
+If we run ```terraform apply```, Terraform finds nothing to do. This is because provisioners only run when a resource is created. As such in order to see this in action we would have to recreate the resource. We can inform terraform to recreate the instance with the following command:
 ```
 terraform taint google_compute_instance.vm_instance
 ```
