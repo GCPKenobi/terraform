@@ -1,6 +1,5 @@
 ## Task 1. Create the configuration files
-Run the following in Cloud Shell to create the files:
-
+Run the following in Cloud Shell to create the following Terraform configuration files:
 ```
 mkdir storage
 mkdir modules
@@ -15,8 +14,7 @@ cd
 ```
 
 In Cloud Shell editor, edit both ```variables.tf``` files with the following (make sure to replace the values for REGION, ZONE AND PROJECT_ID):
-variables.tf
-
+```
 variable "region" {
   type        = string
   default     = "<REGION>"
@@ -30,7 +28,7 @@ variable "project_id" {
   type        = string
   default     = "<PROJECT_ID>"
 }
-
+```
 
 Edit the ```main.tf``` with the following to add the Google Provider:
 ```
@@ -44,9 +42,11 @@ provider "google" {
 ## Task 2. Import infrastructure
 
 Add the following to the bottom of ```main.tf```:
+```
 module "instances" {
   source     = "./modules/instances"
 }
+```
 
 We now update ```instances.tf``` to add the resource configurations for the existing VMs:
 ```
@@ -97,7 +97,7 @@ terraform import module.instances.google_compute_instance.tf-instance-2 tf-insta
 
 ## Task 3. Configure a remote backend
 
-Create the Cloud Storage Bucket resources inside ```storage.tf``` by adding the following (remember to replace the BUCKET_NAME)
+Create the Cloud Storage Bucket resources inside ```storage.tf``` by adding the following (remember to replace the BUCKET_NAME):
 ```
 resource "google_storage_bucket" bucket" {
   name               = "<BUCKET_NAME>"
@@ -114,11 +114,12 @@ module "storage" {
 }
 ```
 
-Rune the following commands to initalize the modeul and create the Cloud Storage Bucket. When prompted type **yes**
+Run the following commands to initalize the modeul and create the Cloud Storage Bucket. When prompted type **yes**
 ```
 terraform init
 terraform apply
 ```
+
 We can now update ```main.tf``` by adding the following at the top (remember to replace BUCKET_NAME with your value):
 ```
 terraform{
@@ -176,7 +177,7 @@ allow_stopping_for_update = true
 
 We can then add the following at the bottom of the file to create the new VM (replace INSTANCE_NAME with the lab provided value):
 ```
-resource "google_compute_instance" "tf-instance-160609" {
+resource "google_compute_instance" <INSTANCE_NAME>" {
   name         = "<INSTANCE_NAME>"
   machine_type = "n1-standard-2"
 
