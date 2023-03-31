@@ -26,7 +26,6 @@ variable "zone" {
   default     = "<ZONE>"
 }
 variable "project_id" {
-  description = "Name of the buckets to create."
   type        = string
   default     = "<PROJECT_ID>"
 }
